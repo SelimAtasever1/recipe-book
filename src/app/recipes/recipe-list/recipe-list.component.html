@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-success" (click)="onCreateNewRecipe()">New Recipe</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <input type="text" class="form-control" [(ngModel)]="filteredString" placeholder="search for a recipe">
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+    <app-recipe-item 
+        *ngFor="let recipeEl of recipes | filter:filteredString; let i = index" 
+        [recipe]="recipeEl" 
+        [index]="i">
+    </app-recipe-item>
+
+    <ng-container *ngIf="(recipes | filter: filteredString) as filteredItems">
+        <div *ngIf="filteredItems.length > 0"></div>
+        
+        <p *ngIf="filteredItems.length === 0">No results found for "{{ filteredString }}"</p>
+    </ng-container>
+    </div>
+</div>

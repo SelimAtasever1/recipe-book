@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form (ngSubmit)="SubmitNewItem(myForm)" #myForm="ngForm">
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label for="name">Name</label>
+                    <input 
+                    type="text" 
+                    id="name" 
+                    class="form-control"
+                    name="name"
+                    ngModel
+                    required
+                    >
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="amount">Amount</label>
+                    <input 
+                    type="number" 
+                    id="amount" 
+                    class="form-control"
+                    name="amount"
+                    ngModel
+                    required
+                    >
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <button class="btn btn-success" type="submit" [disabled]="!myForm.valid">{{ editMode ? 'Update' : 'Add' }}</button>
+                    <button class="btn btn-danger" type="button" *ngIf="editMode" (click)="onDeleteItem()">Delete</button>
+                    <button class="btn btn-primary" type="button" (click)="ClearForm()">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
